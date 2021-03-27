@@ -17,6 +17,7 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/red">
@@ -35,26 +36,46 @@
 
   </FrameLayout>
 
-  <FrameLayout
-      android:id="@+id/right_column"
-      android:layout_width="0dp"
-      android:layout_height="0dp"
-      android:layout_marginTop="@dimen/glass_card_two_column_margin"
-      android:layout_marginStart="@dimen/glass_card_two_column_margin"
-      android:layout_marginBottom="@dimen/glass_card_two_column_margin"
-      android:layout_marginEnd="@dimen/glass_card_margin"
-      app:layout_constraintBottom_toTopOf="@id/footer"
+  <TextView
+      android:id="@+id/titulo"
+      android:layout_width="332dp"
+      android:layout_height="68dp"
+      android:layout_margin="@dimen/glass_card_margin"
+      android:text="Manutenção"
+      android:textAlignment="center"
+      android:textColor="#000000"
+      android:textSize="50sp"
+      app:layout_constraintBottom_toTopOf="@+id/right_column"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toEndOf="@id/left_column"
-      app:layout_constraintTop_toTopOf="parent">
-
-    <!-- Put widgets for the right column inside this FrameLayout. -->
-
-  </FrameLayout>
+      app:layout_constraintStart_toStartOf="@+id/right_column"
+      app:layout_constraintTop_toTopOf="parent" />
 
   <!-- The footer view will grow to fit as much content as possible while the
          timestamp view keeps its width. If the footer text is too long, it
          will be ellipsized with a 40dp margin between it and the timestamp. -->
+
+  <FrameLayout
+      android:id="@+id/right_column"
+      android:layout_width="379dp"
+      android:layout_height="179dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/left_column"
+      app:layout_constraintTop_toTopOf="parent">
+
+    <!-- Put widgets for the right column inside this FrameLayout. -->
+
+    <Button
+        android:id="@+id/qrcode"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
+        android:text="Qrcode"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:backgroundTint="#FDFDFD" />
+
+  </FrameLayout>
 
   <TextView
       android:id="@+id/footer"

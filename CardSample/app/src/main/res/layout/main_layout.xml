@@ -17,50 +17,52 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ED0808">
 
   <TextView
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_margin="@dimen/glass_card_margin"
       android:id="@+id/titulo"
+      android:layout_width="574dp"
+      android:layout_height="67dp"
+      android:layout_margin="@dimen/glass_card_margin"
       android:text="Manutenção"
       android:textAlignment="center"
       android:textColor="#000000"
       android:textSize="50sp"
-      app:layout_constraintBottom_toTopOf="@id/body_layout"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"/>
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
 
   <FrameLayout
       android:id="@+id/body_layout"
-      android:layout_width="0dp"
-      android:layout_height="0dp"
+      android:layout_width="571dp"
+      android:layout_height="168dp"
       android:layout_margin="@dimen/glass_card_margin"
       app:layout_constraintBottom_toTopOf="@id/footer"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@id/titulo">
+      app:layout_constraintTop_toBottomOf="@+id/titulo">
 
     <!-- Put your widgets inside this FrameLayout. -->
 
     <Button
         android:id="@+id/qrcode"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="5dp"
+        android:layout_width="283dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="90dp"
         android:text="Qrcode"
         android:textColor="#000000"
         android:textSize="25sp"
         app:backgroundTint="#FDFDFD" />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
+        android:layout_width="280dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="90dp"
         android:text="videochamada"
         android:textColor="#000000"
         android:textSize="25sp"

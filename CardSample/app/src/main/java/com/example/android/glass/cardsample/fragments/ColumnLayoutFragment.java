@@ -48,15 +48,24 @@ public class ColumnLayoutFragment extends BaseFragment {
    * @param footer is a String with the card footer text.
    * @param timestamp is a String with the card timestamp text.
    */
-  public static ColumnLayoutFragment newInstance(int image, String text, String footer,
-      String timestamp) {
+  public static ColumnLayoutFragment newInstance(int image, @Nullable String text, @Nullable String footer,
+      @Nullable String timestamp) {
     final ColumnLayoutFragment myFragment = new ColumnLayoutFragment();
 
     final Bundle args = new Bundle();
     args.putInt(IMAGE_KEY, image);
-    args.putString(TEXT_KEY, text);
-    args.putString(FOOTER_KEY, footer);
-    args.putString(TIMESTAMP_KEY, timestamp);
+    if (text != null) {
+      args.putString(TEXT_KEY, text);
+    }
+    if (footer != null) {
+      args.putString(FOOTER_KEY, footer);
+    }
+    if (timestamp != null) {
+      args.putString(TIMESTAMP_KEY, timestamp);
+    }
+
+
+
     myFragment.setArguments(args);
 
     return myFragment;
