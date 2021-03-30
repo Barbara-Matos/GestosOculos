@@ -47,12 +47,12 @@ public class MainActivity extends BaseActivity {
         viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(screenSlidePagerAdapter);
 
-        fragments.add(ColumnLayoutFragment
-            .newInstance(R.drawable.ic_qrcode, getString(R.string.columns_sample),
-                getString(R.string.footnote_sample), getString(R.string.timestamp_sample)));
         fragments.add(MainLayoutFragment
-            .newInstance(getString(R.string.like_this_sample), getString(R.string.empty_string),
-                getString(R.string.empty_string), null));
+            .newInstance(null, null, null, null));
+        fragments.add(MainLayoutFragment
+                .newInstance(null, null, null, null));
+        fragments.add(MainLayoutFragment
+                .newInstance(null, null, null, null));
 
         screenSlidePagerAdapter.notifyDataSetChanged();
 

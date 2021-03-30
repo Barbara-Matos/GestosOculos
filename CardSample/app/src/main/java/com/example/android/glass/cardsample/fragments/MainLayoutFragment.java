@@ -44,7 +44,7 @@ public class MainLayoutFragment extends BaseFragment {
    * @param footer is a String with the card footer text.
    * @param timestamp is a String with the card timestamp text.
    */
-  public static MainLayoutFragment newInstance(String text, String footer, String timestamp,
+  public static MainLayoutFragment newInstance(@Nullable String text, @Nullable String footer, @Nullable String timestamp,
       @Nullable Integer menu) {
     final MainLayoutFragment myFragment = new MainLayoutFragment();
 
