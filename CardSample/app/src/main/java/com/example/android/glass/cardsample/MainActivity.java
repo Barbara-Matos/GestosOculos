@@ -16,6 +16,7 @@
 
 package com.example.android.glass.cardsample;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -24,6 +25,8 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.android.glass.cardsample.fragments.BaseFragment;
 import com.example.android.glass.cardsample.fragments.ColumnLayoutFragment;
 import com.example.android.glass.cardsample.fragments.MainLayoutFragment;
+import com.example.android.glass.cardsample.menu.MenuAdapter;
+import com.example.android.glass.cardsample.menu.videochamada;
 import com.example.glass.ui.GlassGestureDetector.Gesture;
 import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
@@ -66,9 +69,18 @@ public class MainActivity extends BaseActivity {
             case TAP:
                 fragments.get(viewPager.getCurrentItem()).onSingleTapUp();
                 return true;
+            case TWO_FINGER_TAP:
+                openCriar();
+                return true;
+
             default:
                 return super.onGesture(gesture);
         }
+    }
+
+    public void openCriar(){
+        Intent intent=new Intent(this, videochamada.class);
+        startActivity(intent);
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
@@ -88,3 +100,4 @@ public class MainActivity extends BaseActivity {
         }
     }
 }
+
