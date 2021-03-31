@@ -60,6 +60,7 @@
         app:backgroundTint="#FDFDFD" />
 
     <Button
+        android:id="@+id/videochamada"
         android:layout_width="280dp"
         android:layout_height="66dp"
         android:layout_marginStart="280dp"

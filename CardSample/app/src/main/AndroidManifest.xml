@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".menu.videochamada"></activity>
+        <activity android:name=".menu.qrcode"></activity>
+        <activity android:name=".menu.videochamada" />
         <!--
       Changes Glass touchpad response from the following key strokes:
         - Enter

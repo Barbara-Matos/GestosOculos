@@ -46,16 +46,16 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.view_pager_layout);
 
         final ScreenSlidePagerAdapter screenSlidePagerAdapter = new ScreenSlidePagerAdapter(
-            getSupportFragmentManager());
+                getSupportFragmentManager());
         viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(screenSlidePagerAdapter);
 
         fragments.add(MainLayoutFragment
-            .newInstance(null, null, null, null));
-        fragments.add(MainLayoutFragment
                 .newInstance(null, null, null, null));
         fragments.add(MainLayoutFragment
                 .newInstance(null, null, null, null));
+        //fragments.add(MainLayoutFragment
+        //        .newInstance(null, null, null, null));
 
         screenSlidePagerAdapter.notifyDataSetChanged();
 
@@ -100,4 +100,3 @@ public class MainActivity extends BaseActivity {
         }
     }
 }
-
