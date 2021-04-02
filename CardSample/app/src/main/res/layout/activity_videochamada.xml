@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#ED0808"
-    tools:context=".menu.videochamada">
+    tools:context=".videochamada">
 
 
     <!-- The footer view will grow to fit as much content as possible while the

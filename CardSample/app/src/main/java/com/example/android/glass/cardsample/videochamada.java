@@ -1,4 +1,4 @@
-package com.example.android.glass.cardsample.menu;
+package com.example.android.glass.cardsample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -35,8 +35,7 @@ public class videochamada extends AppCompatActivity {
         }
     }
 
-    // ISTO AINDA ESTÁ ERRADO PORQUE ESTÁ COM O BOTÃO
-
+    // ISTO AINDA ESTÁ ERRADO PORQUE ESTÁ COM O BOTÃO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public void onButtonClick(View view) {
         //EditText editText = findViewById(R.id.conferenceName);
         //String text = editText.getText().toString();

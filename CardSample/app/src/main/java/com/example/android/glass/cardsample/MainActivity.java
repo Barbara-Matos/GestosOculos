@@ -18,7 +18,6 @@ package com.example.android.glass.cardsample;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -28,13 +27,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import com.example.android.glass.cardsample.fragments.BaseFragment;
-import com.example.android.glass.cardsample.fragments.ColumnLayoutFragment;
-import com.example.android.glass.cardsample.fragments.MainLayoutFragment;
-import com.example.android.glass.cardsample.menu.MenuAdapter;
-import com.example.android.glass.cardsample.menu.qrcode;
-import com.example.android.glass.cardsample.menu.videochamada;
 import com.example.glass.ui.GlassGestureDetector.Gesture;
-import com.google.android.material.tabs.TabLayout;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -44,9 +37,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -87,6 +77,8 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onGesture (Gesture gesture){
         switch (gesture) {
+            //case SWIPE_FORWARD:
+                //fragments.get(viewPager.getCurrentItem()).onSingleTapUp();
             case TAP:
                 qrScan.initiateScan();
                 //fragments.get(viewPager.getCurrentItem()).onSingleTapUp();
@@ -94,7 +86,6 @@ public class MainActivity extends BaseActivity {
             case TWO_FINGER_TAP:
                 openCall();
                 return true;
-
             default:
                 return super.onGesture(gesture);
         }
