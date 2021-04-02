@@ -8,52 +8,57 @@
     tools:context=".menu.videochamada">
 
 
+    <!-- The footer view will grow to fit as much content as possible while the
+           timestamp view keeps its width. If the footer text is too long, it
+           will be ellipsized with a 40dp margin between it and the timestamp. -->
+
     <TextView
+        android:id="@+id/titulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/glass_card_margin"
-        android:id="@+id/titulo"
+        android:layout_marginBottom="16dp"
         android:text="Manutenção"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="50sp"
-        app:layout_constraintBottom_toTopOf="@id/body_layout"
+        app:layout_constraintBottom_toTopOf="@+id/body_layout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
         android:id="@+id/body_layout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="564dp"
+        android:layout_height="144dp"
         android:layout_margin="@dimen/glass_card_margin"
-        app:layout_constraintBottom_toTopOf="@id/footer"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/footer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/titulo">
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent">
 
         <!-- Put your widgets inside this FrameLayout. -->
+
         <ImageView
             android:id="@+id/imagemachine"
-            android:layout_width="116dp"
-            android:layout_height="109dp"
-            android:layout_gravity="center"
+            android:layout_width="95dp"
+            android:layout_height="97dp"
             android:contentDescription="imagemmaquina"
-            android:src="@drawable/ic_videochamada" />
+            android:src="@drawable/ic_videochamada"
+            android:layout_gravity="center_horizontal"/>
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_margin="12dp"
-            android:onClick="onButtonClick"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
             android:background="#000080"
+            android:onClick="onButtonClick"
+            android:text="JoinRoom"
             android:textColor="#000000"
-            app:backgroundTint="#FDFDFD"
-            android:text="JoinRoom"/>
+            android:textSize="25sp"
+            app:backgroundTint="#FDFDFD" />
     </FrameLayout>
-
-    <!-- The footer view will grow to fit as much content as possible while the
-           timestamp view keeps its width. If the footer text is too long, it
-           will be ellipsized with a 40dp margin between it and the timestamp. -->
 
     <TextView
         android:id="@+id/footer"
