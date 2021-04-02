@@ -18,6 +18,11 @@ package com.example.android.glass.cardsample;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -26,11 +31,24 @@ import com.example.android.glass.cardsample.fragments.BaseFragment;
 import com.example.android.glass.cardsample.fragments.ColumnLayoutFragment;
 import com.example.android.glass.cardsample.fragments.MainLayoutFragment;
 import com.example.android.glass.cardsample.menu.MenuAdapter;
+import com.example.android.glass.cardsample.menu.qrcode;
 import com.example.android.glass.cardsample.menu.videochamada;
 import com.example.glass.ui.GlassGestureDetector.Gesture;
 import com.google.android.material.tabs.TabLayout;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Main activity of the application. It provides viewPager to move between fragments.
@@ -40,37 +58,41 @@ public class MainActivity extends BaseActivity {
     private List<BaseFragment> fragments = new ArrayList<>();
     private ViewPager viewPager;
 
+    private IntentIntegrator qrScan;
+    private Button buttonScan;
+    private EditText texto;
+    public String id = null, idmaquina;
+    public int num = 0;
+    private JsonPlaceHolderApi jsonPlaceHolderApi;
+    public String id_maquina;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.view_pager_layout);
+        setContentView(R.layout.main_layout);
 
-        final ScreenSlidePagerAdapter screenSlidePagerAdapter = new ScreenSlidePagerAdapter(
-                getSupportFragmentManager());
-        viewPager = findViewById(R.id.viewPager);
-        viewPager.setAdapter(screenSlidePagerAdapter);
+        getSupportActionBar().hide();
+        //buttonScan = findViewById(R.id.qrcode);
 
-        fragments.add(MainLayoutFragment
-                .newInstance(null, null, null, null));
-        fragments.add(MainLayoutFragment
-                .newInstance(null, null, null, null));
-        //fragments.add(MainLayoutFragment
-        //        .newInstance(null, null, null, null));
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://192.168.1.5:8000/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
-        screenSlidePagerAdapter.notifyDataSetChanged();
-
-        final TabLayout tabLayout = findViewById(R.id.page_indicator);
-        tabLayout.setupWithViewPager(viewPager, true);
+        JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
+        qrScan = new IntentIntegrator(this);
+        //buttonScan.setOnClickListener(this);
     }
 
     @Override
-    public boolean onGesture(Gesture gesture) {
+    public boolean onGesture (Gesture gesture){
         switch (gesture) {
             case TAP:
-                fragments.get(viewPager.getCurrentItem()).onSingleTapUp();
+                qrScan.initiateScan();
+                //fragments.get(viewPager.getCurrentItem()).onSingleTapUp();
                 return true;
             case TWO_FINGER_TAP:
-                openCriar();
+                openCall();
                 return true;
 
             default:
@@ -78,22 +100,49 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    public void openCriar(){
-        Intent intent=new Intent(this, videochamada.class);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (result != null) {
+
+            if (result.getContents() == null) {
+                Toast.makeText(this, "Result Not Found", Toast.LENGTH_LONG).show();
+            } else {
+                num = 1;
+                try {
+                    JSONObject obj = new JSONObject(result.getContents());
+                    id = obj.getString("id");
+
+                    openScan();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
+                }
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    public void openCall () {
+        Intent intent = new Intent(this, videochamada.class);
+        startActivity(intent);
+    }
+
+    public void openScan () {
+        Intent intent = new Intent(this, qrcode.class);
+        intent.putExtra("idmaquina", id);
         startActivity(intent);
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
-
         ScreenSlidePagerAdapter(FragmentManager fm) {
             super(fm);
         }
-
         @Override
         public Fragment getItem(int position) {
             return fragments.get(position);
         }
-
         @Override
         public int getCount() {
             return fragments.size();
