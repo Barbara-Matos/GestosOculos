@@ -2,12 +2,14 @@ package com.example.android.glass.cardsample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
 
 import com.example.android.glass.cardsample.R;
+import com.example.glass.ui.GlassGestureDetector;
 
 import org.jitsi.meet.sdk.JitsiMeetActivity;
 import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
@@ -15,7 +17,7 @@ import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class videochamada extends AppCompatActivity {
+public class videochamada extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +37,21 @@ public class videochamada extends AppCompatActivity {
         }
     }
 
-    // ISTO AINDA ESTÁ ERRADO PORQUE ESTÁ COM O BOTÃO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    public void onButtonClick(View view) {
+    @Override
+    public boolean onGesture (GlassGestureDetector.Gesture gesture){
+        switch (gesture) {
+            case TAP:
+                openVideochamada();
+                return true;
+            case SWIPE_BACKWARD:
+                goBack();
+                return true;
+            default:
+                return super.onGesture(gesture);
+        }
+    }
+
+    public void openVideochamada() {
         //EditText editText = findViewById(R.id.conferenceName);
         //String text = editText.getText().toString();
         String text = "HufChamadas";
@@ -46,5 +61,10 @@ public class videochamada extends AppCompatActivity {
                     = new JitsiMeetConferenceOptions.Builder().setRoom(text).build();
             JitsiMeetActivity.launch(this, options);
         }
+    }
+
+    public void goBack(){
+        Intent intent=new Intent(this,MainActivity.class);
+        startActivity(intent);
     }
 }

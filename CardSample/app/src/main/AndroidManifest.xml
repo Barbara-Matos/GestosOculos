@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ordem_trabalho"></activity>
-        <activity android:name=".qrcode" />
         <activity android:name=".videochamada" />
+        <activity android:name=".MaquinaXXX"/>
         <!--
       Changes Glass touchpad response from the following key strokes:
         - Enter

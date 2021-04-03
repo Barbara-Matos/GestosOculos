@@ -77,11 +77,8 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onGesture (Gesture gesture){
         switch (gesture) {
-            //case SWIPE_FORWARD:
-                //fragments.get(viewPager.getCurrentItem()).onSingleTapUp();
             case TAP:
                 qrScan.initiateScan();
-                //fragments.get(viewPager.getCurrentItem()).onSingleTapUp();
                 return true;
             case TWO_FINGER_TAP:
                 openCall();
@@ -115,13 +112,13 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    public void openCall () {
+    public void openCall() {
         Intent intent = new Intent(this, videochamada.class);
         startActivity(intent);
     }
 
-    public void openScan () {
-        Intent intent = new Intent(this, qrcode.class);
+    public void openScan() {
+        Intent intent = new Intent(this, MaquinaXXX.class);
         intent.putExtra("idmaquina", id);
         startActivity(intent);
     }
