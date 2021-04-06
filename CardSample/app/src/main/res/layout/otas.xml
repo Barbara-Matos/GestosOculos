@@ -7,75 +7,34 @@
     android:layout_height="match_parent"
     android:background="#ED0808">
 
-    <!-- The footer view will grow to fit as much content as possible while the
-           timestamp view keeps its width. If the footer text is too long, it
-           will be ellipsized with a 40dp margin between it and the timestamp. -->
-
     <TextView
         android:id="@+id/titulo"
-        android:layout_width="574dp"
-        android:layout_height="67dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_margin="@dimen/glass_card_margin"
-        android:text="Maquina XXXX"
+        android:layout_marginTop="28dp"
+        android:text="Ordens de Trabalho Abertas"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="50sp"
+        android:textSize="45sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
         android:id="@+id/body_layout"
-        android:layout_width="574dp"
-        android:layout_height="177dp"
+        android:layout_width="626dp"
+        android:layout_height="179dp"
         android:layout_margin="@dimen/glass_card_margin"
-        android:layout_marginBottom="36dp"
-        app:layout_constraintBottom_toTopOf="@id/footer"
+        app:layout_constraintBottom_toTopOf="@+id/footer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titulo"
-        app:layout_constraintVertical_bias="0.65">
+        app:layout_constraintStart_toStartOf="parent">
 
         <!-- Put your widgets inside this FrameLayout. -->
-
-        <Button
-            android:id="@+id/qrcode"
-            android:layout_width="281dp"
-            android:layout_height="82dp"
-            android:layout_marginTop="100dp"
-            android:text="Ordens de Trabalho"
-            android:textColor="#000000"
-            android:textSize="25sp"
-            app:backgroundTint="#FDFDFD" />
-
-        <Button
-            android:id="@+id/videochamada"
-            android:layout_width="296dp"
-            android:layout_height="82dp"
-            android:layout_marginStart="280dp"
-            android:layout_marginTop="100dp"
-            android:text="Ficheiros"
-            android:textColor="#000000"
-            android:textSize="25sp"
-            app:backgroundTint="#FDFDFD" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="113dp"
-            android:layout_height="102dp"
-            android:layout_marginStart="80dp"
-            android:contentDescription="ImagemQrcode"
-            app:srcCompat="@drawable/ic_otas" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="114dp"
-            android:layout_height="101dp"
-            android:layout_marginStart="355dp"
-            android:contentDescription="VideoImagem"
-            android:src="@drawable/ic_files" />
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
 
     </FrameLayout>
 
@@ -105,7 +64,6 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
 
 
 

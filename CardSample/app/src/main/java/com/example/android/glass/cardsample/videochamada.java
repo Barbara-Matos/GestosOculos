@@ -43,7 +43,7 @@ public class videochamada extends BaseActivity {
             case TAP:
                 openVideochamada();
                 return true;
-            case SWIPE_BACKWARD:
+            case TWO_FINGER_SWIPE_BACKWARD:
                 goBack();
                 return true;
             default:

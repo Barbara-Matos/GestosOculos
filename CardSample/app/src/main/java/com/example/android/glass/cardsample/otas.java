@@ -9,18 +9,17 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.android.glass.cardsample.fragments.BaseFragment;
-import com.example.android.glass.cardsample.fragments.ColumnLayoutFragment;
 import com.example.android.glass.cardsample.fragments.ListOTAsLayoutFragment;
-import com.example.android.glass.cardsample.fragments.MainLayoutFragment;
 import com.example.android.glass.cardsample.fragments.MaquinaHistoricLayoutFragment;
 import com.example.android.glass.cardsample.fragments.MaquinaOTAsLayoutFragment;
+import com.example.android.glass.cardsample.fragments.UltimasManutencoesLayoutFragment;
 import com.example.glass.ui.GlassGestureDetector;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MaquinaXXX extends BaseActivity{
+public class otas extends BaseActivity{
 
     private List<BaseFragment> fragments = new ArrayList<>();
     private ViewPager viewPager;
@@ -30,13 +29,13 @@ public class MaquinaXXX extends BaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_pager_layout);
 
-        final MaquinaXXX.ScreenSlidePagerAdapter screenSlidePagerAdapter = new MaquinaXXX.ScreenSlidePagerAdapter(
+        final otas.ScreenSlidePagerAdapter screenSlidePagerAdapter = new otas.ScreenSlidePagerAdapter(
                 getSupportFragmentManager());
         viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(screenSlidePagerAdapter);
 
-        fragments.add(MaquinaOTAsLayoutFragment.newInstance(null, null,null, null));
-        fragments.add(MaquinaHistoricLayoutFragment.newInstance(null, null,null, null));
+        fragments.add(ListOTAsLayoutFragment.newInstance(null, null,null, null));
+        fragments.add(UltimasManutencoesLayoutFragment.newInstance(null, null,null, null));
 
         screenSlidePagerAdapter.notifyDataSetChanged();
 
@@ -50,12 +49,12 @@ public class MaquinaXXX extends BaseActivity{
             case SWIPE_FORWARD:
                 fragments.get(viewPager.getCurrentItem()).onSingleTapUp();
                 return true;
-            case TAP:
-                openOTAs();
+           /* case TAP:
+                openOTAspecs();
                 return true;
-           /*     openHistoric()
+                openUltimasManutencoes();
             case TWO_FINGER_TAP:
-                openFiles();
+                criarNovaOTA();
                 return true;*/
             case TWO_FINGER_SWIPE_BACKWARD:
                 goBack();
@@ -65,21 +64,21 @@ public class MaquinaXXX extends BaseActivity{
         }
     }
 
-    public void openOTAs() {
-        Intent intent = new Intent(this, otas.class);
-        startActivity(intent);
-    }
-  /*  public void openFiles() {
-        Intent intent = new Intent(this, .class);
-        startActivity(intent);
-    }
-    public void openHistoric() {
-        Intent intent = new Intent(this, .class);
-        startActivity(intent);
-    }
-*/
+    /*  public void openOTAspecs() {
+          Intent intent = new Intent(this, .class);
+          startActivity(intent);
+      }
+      public void openUltimasManutencoes() {
+          Intent intent = new Intent(this, .class);
+          startActivity(intent);
+      }
+      public void criarNovaOTA() {
+          Intent intent = new Intent(this, .class);
+          startActivity(intent);
+      }
+  */
     public void goBack(){
-        Intent intent=new Intent(this,MainActivity.class);
+        Intent intent=new Intent(this,MaquinaXXX.class);
         startActivity(intent);
     }
 
