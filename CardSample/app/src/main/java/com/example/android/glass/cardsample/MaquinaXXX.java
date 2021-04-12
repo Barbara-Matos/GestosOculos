@@ -54,12 +54,15 @@ public class MaquinaXXX extends BaseActivity{
                 openOTAs();
                 //openHistoric();                  // Os botões não estavam a fazer o que eu queria, por isso comentei
                                                    // Só fiz o histórico
-            //case TWO_FINGER_TAP:
-                //openFiles();
                 return true;
+            case TWO_FINGER_TAP:
+                openFiles();
+                return true;
+
             case TWO_FINGER_SWIPE_BACKWARD:
                 goBack();
                 return true;
+
             default:
                 return super.onGesture(gesture);
         }
@@ -75,11 +78,11 @@ public class MaquinaXXX extends BaseActivity{
         startActivity(intent);
     }
 
-  /*  public void openFiles() {
-        Intent intent = new Intent(this, .class);
+    public void openFiles() {
+        Intent intent = new Intent(this, ficheiros.class);
         startActivity(intent);
     }
-*/
+
     public void goBack(){
         Intent intent=new Intent(this,MainActivity.class);
         startActivity(intent);

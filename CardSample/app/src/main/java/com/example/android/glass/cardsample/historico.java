@@ -94,7 +94,6 @@ public class historico extends BaseActivity {
                         content += "solicitante : " + post.getSolicitante() + "\n";
                         content += "planificador : " + post.getPlanificador() + "\n";
                         texto.append(content);
-
                     }
                     */
                 }
