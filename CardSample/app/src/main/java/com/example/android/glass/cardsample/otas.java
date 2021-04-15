@@ -46,16 +46,22 @@ public class otas extends BaseActivity{
     @Override
     public boolean onGesture(GlassGestureDetector.Gesture gesture) {
         switch (gesture) {
-            case SWIPE_FORWARD:
-                fragments.get(viewPager.getCurrentItem()).onSingleTapUp();
+            case TAP:
+                if (viewPager.getCurrentItem()==0) {
+                   // openOTAspecs();
+                }
+                else {
+                    openUltimasManutencoes();
+                }
                 return true;
-           /* case TAP:
-                openOTAspecs();
-                return true;
-                openUltimasManutencoes();
             case TWO_FINGER_TAP:
-                criarNovaOTA();
-                return true;*/
+                if (viewPager.getCurrentItem()==0) {
+                    return super.onGesture(gesture);
+                }
+                else {
+                    criarNovaOTA();
+                }
+                return true;
             case TWO_FINGER_SWIPE_BACKWARD:
                 goBack();
                 return true;
@@ -64,19 +70,21 @@ public class otas extends BaseActivity{
         }
     }
 
-    /*  public void openOTAspecs() {
-          Intent intent = new Intent(this, .class);
-          startActivity(intent);
-      }
-      public void openUltimasManutencoes() {
-          Intent intent = new Intent(this, .class);
-          startActivity(intent);
-      }
-      public void criarNovaOTA() {
-          Intent intent = new Intent(this, .class);
-          startActivity(intent);
-      }
-  */
+   /* public void openOTAspecs() {
+        Intent intent = new Intent(this, .class);
+         startActivity(intent);
+    } */
+
+    public void openUltimasManutencoes() {
+        Intent intent = new Intent(this, UltimasManutencoes.class);
+        startActivity(intent);
+    }
+
+    public void criarNovaOTA() {
+        Intent intent = new Intent(this, NovaOTA.class);
+        startActivity(intent);
+    }
+
     public void goBack(){
         Intent intent=new Intent(this,MaquinaXXX.class);
         startActivity(intent);

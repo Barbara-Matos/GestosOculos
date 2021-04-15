@@ -2,6 +2,7 @@ package com.example.android.glass.cardsample;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -30,8 +31,7 @@ public class MaquinaXXX extends BaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_pager_layout);
 
-        final MaquinaXXX.ScreenSlidePagerAdapter screenSlidePagerAdapter = new MaquinaXXX.ScreenSlidePagerAdapter(
-                getSupportFragmentManager());
+        final MaquinaXXX.ScreenSlidePagerAdapter screenSlidePagerAdapter = new MaquinaXXX.ScreenSlidePagerAdapter(getSupportFragmentManager());
         viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(screenSlidePagerAdapter);
 
@@ -47,22 +47,22 @@ public class MaquinaXXX extends BaseActivity{
     @Override
     public boolean onGesture(GlassGestureDetector.Gesture gesture) {
         switch (gesture) {
-            case SWIPE_FORWARD:
-                fragments.get(viewPager.getCurrentItem()).onSingleTapUp();
-                return true;
             case TAP:
-                openOTAs();
-                //openHistoric();                  // Os botões não estavam a fazer o que eu queria, por isso comentei
-                                                   // Só fiz o histórico
+                if (viewPager.getCurrentItem()==0) {
+                    openOTAs();
+                }
+                else {
+                    openHistoric();
+                }
                 return true;
             case TWO_FINGER_TAP:
-                openFiles();
+                if (viewPager.getCurrentItem()==0) {
+                    openFiles();
+                }
                 return true;
-
             case TWO_FINGER_SWIPE_BACKWARD:
                 goBack();
                 return true;
-
             default:
                 return super.onGesture(gesture);
         }

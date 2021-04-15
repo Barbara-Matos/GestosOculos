@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -39,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="#000080"
-            android:text="Informações da máquina"
+            android:text="Videos"
             android:textColor="#000000"
             android:textSize="25sp"
             app:backgroundTint="#FDFDFD" />
@@ -49,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:background="#000080"
-            android:text="Fotografias"
+            android:text="PDF Manutenção"
             android:textColor="#000000"
             android:textSize="25sp"
             app:backgroundTint="#FDFDFD" />

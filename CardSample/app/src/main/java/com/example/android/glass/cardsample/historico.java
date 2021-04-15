@@ -41,6 +41,7 @@ public class historico extends BaseActivity {
         //
         Call<PostList> call = jsonPlaceHolderApi.getPosts(inter);
         call.enqueue(new Callback<PostList>() {
+
             @Override
             public void onResponse(Call<PostList> call, Response<PostList> response) {
                 List<Post> posts = response.body().getList();
