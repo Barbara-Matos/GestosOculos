@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ficheiros"/>
+        <activity android:name=".click"></activity>
+        <activity android:name=".foto" />
+        <activity android:name=".ficheiros" />
         <activity android:name=".historico" />
         <activity android:name=".ordem_trabalho" />
         <activity android:name=".videochamada" />

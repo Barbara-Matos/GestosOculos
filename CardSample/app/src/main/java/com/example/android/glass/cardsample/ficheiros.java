@@ -47,13 +47,23 @@ public class ficheiros extends BaseActivity {
     @Override
     public boolean onGesture(GlassGestureDetector.Gesture gesture) {
         switch (gesture) {
-           /* case TAP:
-
+            case TAP:
+                if (viewPager.getCurrentItem()==0) {
+                    //infoMaquina();
+                }
+                else {
+                    //videos();
+                }
                 return true;
-                openUltimasManutencoes();
+                //openUltimasManutencoes();
             case TWO_FINGER_TAP:
-
-                return true;*/
+                if (viewPager.getCurrentItem()==0) {
+                    goFotos();
+                }
+                else {
+                    //pdf();
+                }
+                return true;
             case TWO_FINGER_SWIPE_BACKWARD:
                 goBack();
                 return true;
@@ -64,6 +74,11 @@ public class ficheiros extends BaseActivity {
 
     public void goBack(){
         Intent intent=new Intent(this,MaquinaXXX.class);
+        startActivity(intent);
+    }
+
+    public void goFotos(){
+        Intent intent=new Intent(this,foto.class);
         startActivity(intent);
     }
 

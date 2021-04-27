@@ -59,4 +59,8 @@ dependencies {
     implementation 'com.journeyapps:zxing-android-embedded:3.4.0'
     implementation 'me.dm7.barcodescanner:zxing:1.9.13'
     implementation ('org.jitsi.react:jitsi-meet-sdk:2.9.0') { transitive = true }
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    // Glide v4 uses this new annotation processor -- see https://bumptech.github.io/glide/doc/generatedapi.html
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+    implementation('com.squareup.okhttp3:logging-interceptor:4.7.2')
 }
