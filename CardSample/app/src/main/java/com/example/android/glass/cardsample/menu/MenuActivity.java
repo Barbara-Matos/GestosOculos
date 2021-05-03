@@ -41,7 +41,7 @@ import java.util.List;
  * Activity which provides the menu functionality. It creates the horizontal recycler view to move
  * between menu items.
  */
-public class MenuActivity extends BaseActivity implements OnGestureListener {
+public abstract class MenuActivity extends BaseActivity implements OnGestureListener {
 
   /**
    * Key for the menu item id.

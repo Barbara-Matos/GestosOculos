@@ -41,10 +41,10 @@ public class foto extends BaseActivity {
         getSupportActionBar().hide();
         getAllimages();
         //gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-           // @Override
-           // public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-           //     startActivity(new Intent(foto.this,click.class).putExtra("data",imagesResponseList.get(i)) );
-           // }
+        // @Override
+        // public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        //     startActivity(new Intent(foto.this,click.class).putExtra("data",imagesResponseList.get(i)) );
+        // }
         //}
         //);
     }

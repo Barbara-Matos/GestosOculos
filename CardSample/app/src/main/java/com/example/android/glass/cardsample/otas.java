@@ -48,7 +48,7 @@ public class otas extends BaseActivity{
         switch (gesture) {
             case TAP:
                 if (viewPager.getCurrentItem()==0) {
-                   // openOTAspecs();
+                    // openOTAspecs();
                 }
                 else {
                     openUltimasManutencoes();

@@ -55,7 +55,7 @@ public class ficheiros extends BaseActivity {
                     //videos();
                 }
                 return true;
-                //openUltimasManutencoes();
+            //openUltimasManutencoes();
             case TWO_FINGER_TAP:
                 if (viewPager.getCurrentItem()==0) {
                     goFotos();

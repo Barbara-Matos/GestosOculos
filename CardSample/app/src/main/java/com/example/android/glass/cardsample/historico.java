@@ -71,7 +71,6 @@ public class historico extends BaseActivity {
                         content += "solicitante : " + post.getSolicitante() + "\n";
                         content += "planificador : " + post.getPlanificador() + "\n";
                         texto.append(content);
-
                     }
                     if(post.getAvaria().equals("eletrico")){
                         String content ="\n";
@@ -83,7 +82,6 @@ public class historico extends BaseActivity {
                         content += "solicitante : " + post.getSolicitante() + "\n";
                         content += "planificador : " + post.getPlanificador() + "\n";
                         texto.append(content);
-
                     }
                     if(post.getAvaria().equals("software")){
                         String content ="\n";
