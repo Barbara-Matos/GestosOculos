@@ -37,6 +37,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -65,7 +68,7 @@ public class MainActivity extends BaseActivity {
         //buttonScan = findViewById(R.id.qrcode);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.5:8000/")
+                .baseUrl("http://192.168.1.108:8000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -98,10 +101,33 @@ public class MainActivity extends BaseActivity {
             } else {
                 num = 1;
                 try {
-                    JSONObject obj = new JSONObject(result.getContents());
-                    id = obj.getString("id");
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl("http://192.168.1.108:8000/")
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
 
-                    openScan();
+                    JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
+
+                    JSONObject obj = new JSONObject(result.getContents());
+                    id=obj.getString("id");
+                    Call<PostList> call = jsonPlaceHolderApi.getPosts(id);
+                    call.enqueue(new Callback<PostList>() {
+                        @Override
+                        public void onResponse(Call<PostList> call, Response<PostList> response) {
+                            List<Post> posts = response.body().getList();
+
+                            for (Post post : posts) {
+                                idmaquina="";
+                                idmaquina=post.getIdmaquina();
+                                if(idmaquina.equals(id)){
+                                    openScan();
+                                }
+                            }
+                        }
+                        @Override
+                        public void onFailure(Call<PostList> call, Throwable t) {
+                        }
+                    });
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();

@@ -75,6 +75,9 @@ public class MaquinaXXX extends BaseActivity{
 
     public void openHistoric() {
         Intent intent = new Intent(this, historico.class);
+        Intent i = getIntent();
+        String inter=i.getStringExtra("idmaquina");
+        intent.putExtra("idmaquina",inter);
         startActivity(intent);
     }
 

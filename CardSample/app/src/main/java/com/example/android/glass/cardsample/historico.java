@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.example.glass.ui.GlassGestureDetector;
@@ -28,7 +29,7 @@ public class historico extends BaseActivity {
         texto = findViewById(R.id.hist);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.5:8000/")
+                .baseUrl("http://192.168.1.108:8000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -40,8 +41,7 @@ public class historico extends BaseActivity {
         //parameters.put("idmaquina","3456");
         //
         Call<PostList> call = jsonPlaceHolderApi.getPosts(inter);
-        call.enqueue(new Callback<PostList>() {
-
+        call.enqueue(new Callback<PostList>(){
             @Override
             public void onResponse(Call<PostList> call, Response<PostList> response) {
                 List<Post> posts = response.body().getList();
@@ -71,6 +71,7 @@ public class historico extends BaseActivity {
                         content += "solicitante : " + post.getSolicitante() + "\n";
                         content += "planificador : " + post.getPlanificador() + "\n";
                         texto.append(content);
+
                     }
                     if(post.getAvaria().equals("eletrico")){
                         String content ="\n";
@@ -82,6 +83,7 @@ public class historico extends BaseActivity {
                         content += "solicitante : " + post.getSolicitante() + "\n";
                         content += "planificador : " + post.getPlanificador() + "\n";
                         texto.append(content);
+
                     }
                     if(post.getAvaria().equals("software")){
                         String content ="\n";
@@ -93,12 +95,14 @@ public class historico extends BaseActivity {
                         content += "solicitante : " + post.getSolicitante() + "\n";
                         content += "planificador : " + post.getPlanificador() + "\n";
                         texto.append(content);
+
                     }
                     */
                 }
             }
             @Override
             public void onFailure(Call<PostList> call, Throwable t) {
+                Log.e("Erro", t.getMessage());
                 texto.setText(t.getMessage());
             }
         });
