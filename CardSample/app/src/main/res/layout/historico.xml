@@ -26,16 +26,22 @@
         android:layout_width="561dp"
         android:layout_height="131dp"
         android:layout_margin="@dimen/glass_card_margin"
+        android:layout_marginTop="90dp"
         app:layout_constraintBottom_toTopOf="@+id/footer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/titulo">
 
-        <TextView
-            android:id="@+id/hist"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="683dp"
-            android:layout_below="@id/titulo"
-            android:textSize="20dp" />
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/hist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp" />
+        </ScrollView>
 
     </FrameLayout>
 

@@ -12,9 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
         tools:replace="android:label">
-        <activity android:name=".click"></activity>
+        <activity android:name=".click"/>
         <activity android:name=".foto" />
         <activity android:name=".ficheiros" />
         <activity android:name=".historico" />
