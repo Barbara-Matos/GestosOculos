@@ -9,8 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.glass.ui.GlassGestureDetector;
 
-public class click extends AppCompatActivity {
+public class click extends BaseActivity {
     ImagesResponse imageResponse;
     TextView Nome;
     ImageView imageView;
@@ -19,17 +20,37 @@ public class click extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.click);
         Intent intent = getIntent();
-        Nome=findViewById(R.id.selectName);
         imageView=findViewById(R.id.selectedImage);
 
 
         if(intent.getExtras() != null){
             imageResponse= (ImagesResponse) intent.getSerializableExtra("data");
             Nome.setText(imageResponse.getIdmaquina());
-
-            Glide.with(this).load(imageResponse.getImage()).into(imageView);
-
+            String idmaquina=imageResponse.getIdmaquina();
+            if(idmaquina.equals("392098")) {
+                Glide.with(this)
+                        .load(imageResponse.getImage())
+                        .into(imageView);
+            }
         }
+    }
 
+    @Override
+    public boolean onGesture (GlassGestureDetector.Gesture gesture){
+        switch (gesture) {
+            case TAP:
+                return true;
+            case TWO_FINGER_TAP:
+                return true;
+            case TWO_FINGER_SWIPE_BACKWARD:
+                goBack();
+            default:
+                return super.onGesture(gesture);
+        }
+    }
+
+    public void goBack(){
+        Intent intent=new Intent(this,foto.class);
+        startActivity(intent);
     }
 }

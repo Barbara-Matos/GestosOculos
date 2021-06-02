@@ -29,7 +29,7 @@ public class historico extends BaseActivity {
         texto = findViewById(R.id.hist);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.173:8000/")
+                .baseUrl("http://192.168.1.108:8000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

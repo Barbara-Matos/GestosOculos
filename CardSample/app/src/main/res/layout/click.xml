@@ -17,21 +17,13 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <!--Isto é para ver a imagem em grande, também deve estar mal-->
+
+        <!--Isto é para estar por baixo do imageView, não consegui-->
         <ImageView
             android:id="@+id/selectedImage"
             android:layout_width="match_parent"
             android:layout_height="178dp"
             android:layout_centerHorizontal="true" />
-
-        <!--Isto é para estar por baixo do imageView, não consegui-->
-        <TextView
-            android:id="@+id/selectName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="20dp"
-            android:textSize="20sp" />
 
     </FrameLayout>
 

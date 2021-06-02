@@ -68,7 +68,7 @@ public class MainActivity extends BaseActivity {
         //buttonScan = findViewById(R.id.qrcode);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.173:8000/")
+                .baseUrl("http://192.168.1.108:8000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -99,35 +99,13 @@ public class MainActivity extends BaseActivity {
             if (result.getContents() == null) {
                 Toast.makeText(this, "Result Not Found", Toast.LENGTH_LONG).show();
             } else {
-                num = 1;
+
+                num=1;
                 try {
-                    Retrofit retrofit = new Retrofit.Builder()
-                            .baseUrl("http://192.168.1.173:8000/")
-                            .addConverterFactory(GsonConverterFactory.create())
-                            .build();
-
-                    JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
-
                     JSONObject obj = new JSONObject(result.getContents());
                     id=obj.getString("id");
-                    Call<PostList> call = jsonPlaceHolderApi.getPosts(id);
-                    call.enqueue(new Callback<PostList>() {
-                        @Override
-                        public void onResponse(Call<PostList> call, Response<PostList> response) {
-                            List<Post> posts = response.body().getList();
 
-                            for (Post post : posts) {
-                                idmaquina="";
-                                idmaquina=post.getIdmaquina();
-                                if(idmaquina.equals(id)){
-                                    openScan();
-                                }
-                            }
-                        }
-                        @Override
-                        public void onFailure(Call<PostList> call, Throwable t) {
-                        }
-                    });
+                    openScan();
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
