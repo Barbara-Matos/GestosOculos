@@ -1,52 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ED0808"
-    tools:context=".Passo">
+    android:background="@color/red">
 
     <FrameLayout
-        android:id="@+id/body_layout"
-        android:layout_width="561dp"
-        android:layout_height="131dp"
-        android:layout_margin="@dimen/glass_card_margin"
-        app:layout_constraintBottom_toTopOf="@+id/footer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:id="@+id/left_column"
+        android:layout_width="400dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="0dp"
+        android:background="#303030"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintWidth_percent=".333">
 
-        <EditText
-            android:id="@+id/passo1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text=""
-            android:textColor="#000000"
-            android:textSize="35dp" />
+        <!-- Put widgets for the left column inside this FrameLayout. -->
 
     </FrameLayout>
-    <ImageView
-        android:id="@+id/selectedImage"
-        android:layout_width="match_parent"
-        android:layout_height="178dp"
-        android:layout_centerHorizontal="true"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="90dp"
-        tools:ignore="MissingConstraints" >
-    </ImageView>
 
-    <Button
-        android:id="@+id/butaoPasso"
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:id="@+id/right_column"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/glass_card_two_column_margin"
+        android:layout_marginStart="@dimen/glass_card_two_column_margin"
+        android:layout_marginBottom="@dimen/glass_card_two_column_margin"
+        android:layout_marginEnd="@dimen/glass_card_margin"
+        app:layout_constraintBottom_toTopOf="@id/footer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/left_column"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Put widgets for the right column inside this FrameLayout. -->
+
+    </FrameLayout>
+
+    <!-- The footer view will grow to fit as much content as possible while the
+           timestamp view keeps its width. If the footer text is too long, it
+           will be ellipsized with a 40dp margin between it and the timestamp. -->
+
+    <TextView
+        android:id="@+id/footer"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Proximo Passo"
-        android:textColor="#000000"
-        android:textSize="35dp"
-        tools:layout_editor_absoluteX="172dp"
-        tools:layout_editor_absoluteY="277dp"
-        tools:ignore="MissingConstraints">
-    </Button>
+        android:layout_marginStart="@dimen/glass_card_margin"
+        android:layout_marginEnd="@dimen/glass_card_margin"
+        android:layout_marginBottom="@dimen/glass_card_margin"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/timestamp"
+        app:layout_constraintStart_toEndOf="@id/left_column" />
+
+    <TextView
+        android:id="@+id/timestamp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/glass_card_margin"
+        android:layout_marginBottom="@dimen/glass_card_margin"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAlignment="viewEnd"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ficheiros extends BaseActivity {
+public class videos extends BaseActivity {
 
     private List<BaseFragment> fragments = new ArrayList<>();
     private ViewPager viewPager;
@@ -32,13 +32,13 @@ public class ficheiros extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_pager_layout);
 
-        final ficheiros.ScreenSlidePagerAdapter screenSlidePagerAdapter = new ficheiros.ScreenSlidePagerAdapter(
+        final videos.ScreenSlidePagerAdapter screenSlidePagerAdapter = new videos.ScreenSlidePagerAdapter(
                 getSupportFragmentManager());
         viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(screenSlidePagerAdapter);
 
-        fragments.add(InfoMaquinaLayoutFragment.newInstance(null, null,null, null));
-        fragments.add(VideosLayoutFragment.newInstance(null, null,null, null));
+        //fragments.add(InfoMaquinaLayoutFragment.newInstance(null, null,null, null));
+        //fragments.add(VideosLayoutFragment.newInstance(null, null,null, null));
 
         screenSlidePagerAdapter.notifyDataSetChanged();
 
@@ -50,21 +50,8 @@ public class ficheiros extends BaseActivity {
     public boolean onGesture(GlassGestureDetector.Gesture gesture) {
         switch (gesture) {
             case TAP:
-                if (viewPager.getCurrentItem()==0) {
-                    //infoMaquina();
-                }
-                else {
-                    //videos();
-                }
                 return true;
-            //openUltimasManutencoes();
             case TWO_FINGER_TAP:
-                if (viewPager.getCurrentItem()==0) {
-                    goFotos();
-                }
-                else {
-                    //pdf();
-                }
                 return true;
             case TWO_FINGER_SWIPE_BACKWARD:
                 goBack();
@@ -75,12 +62,7 @@ public class ficheiros extends BaseActivity {
     }
 
     public void goBack(){
-        Intent intent=new Intent(this,MaquinaXXX.class);
-        startActivity(intent);
-    }
-
-    public void goFotos(){
-        Intent intent=new Intent(this,foto.class);
+        Intent intent=new Intent(this,ficheiros.class);
         startActivity(intent);
     }
 

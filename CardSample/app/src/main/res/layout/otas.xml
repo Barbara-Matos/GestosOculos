@@ -23,10 +23,9 @@
 
     <FrameLayout
         android:id="@+id/body_layout"
-        android:layout_width="557dp"
-        android:layout_height="142dp"
+        android:layout_width="659dp"
+        android:layout_height="198dp"
         android:layout_margin="@dimen/glass_card_margin"
-        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titulo">

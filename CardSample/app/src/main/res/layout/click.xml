@@ -8,13 +8,14 @@
 
     <FrameLayout
         android:id="@+id/body_layout"
-        android:layout_width="561dp"
-        android:layout_height="250dp"
+        android:layout_width="655dp"
+        android:layout_height="280dp"
         android:layout_margin="@dimen/glass_card_margin"
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toTopOf="@+id/footer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <!--Isto é para ver a imagem em grande, também deve estar mal-->
 
@@ -22,7 +23,7 @@
         <ImageView
             android:id="@+id/selectedImage"
             android:layout_width="match_parent"
-            android:layout_height="178dp"
+            android:layout_height="match_parent"
             android:layout_centerHorizontal="true" />
 
     </FrameLayout>

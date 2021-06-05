@@ -1,6 +1,10 @@
 package com.example.android.glass.cardsample;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,7 +21,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.android.glass.cardsample.fragments.BaseFragment;
+import com.example.android.glass.cardsample.fragments.InfoMaquinaLayoutFragment;
+import com.example.android.glass.cardsample.fragments.PassoAPassoFragment;
+import com.example.android.glass.cardsample.fragments.VideosLayoutFragment;
 import com.example.glass.ui.GlassGestureDetector;
+import com.google.android.material.tabs.TabLayout;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +40,65 @@ import retrofit2.Response;
 import static com.example.glass.ui.GlassGestureDetector.Gesture.TWO_FINGER_TAP;
 
 public class Passo extends BaseActivity {
+
+    private List<BaseFragment> fragments = new ArrayList<>();
+    private ViewPager viewPager;
+    private List<ImagesResponse>imagesResponseList=new ArrayList<>();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.view_pager_layout);
+
+        final Passo.ScreenSlidePagerAdapter screenSlidePagerAdapter = new Passo.ScreenSlidePagerAdapter(
+                getSupportFragmentManager());
+        viewPager = findViewById(R.id.viewPager);
+        viewPager.setAdapter(screenSlidePagerAdapter);
+
+        fragments.add(PassoAPassoFragment.newInstance(R.drawable.ic_style, null,"Próximo Passo ->", null));
+
+        screenSlidePagerAdapter.notifyDataSetChanged();
+
+        final TabLayout tabLayout = findViewById(R.id.page_indicator);
+        tabLayout.setupWithViewPager(viewPager, true);
+    }
+
+    @Override
+    public boolean onGesture(GlassGestureDetector.Gesture gesture) {
+        switch (gesture) {
+            case TWO_FINGER_SWIPE_BACKWARD:
+                goBack();
+                return true;
+            default:
+                return super.onGesture(gesture);
+        }
+    }
+
+    public void goBack(){
+        Intent intent=new Intent(this,foto.class);
+        startActivity(intent);
+    }
+
+    private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+
+        ScreenSlidePagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public @NotNull Fragment getItem(int position) {
+            return fragments.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return fragments.size();
+        }
+    }
+}
+
+
+/**
 
     public EditText passo1,info;
     GridView gridView;
@@ -148,3 +218,4 @@ public class Passo extends BaseActivity {
         }
     }
 }
+**/
