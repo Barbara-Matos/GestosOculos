@@ -3,6 +3,7 @@ package com.example.android.glass.cardsample;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,11 +59,18 @@ public class Passo extends BaseActivity {
                     return true;
                 case TWO_FINGER_TAP:
                     return true;
+                case TWO_FINGER_SWIPE_BACKWARD:
+                    goBack();
+                    return true;
                 default:
                     return super.onGesture(gesture);
             }
         }
 
+    public void goBack(){
+        Intent intent=new Intent(this,foto.class);
+        startActivity(intent);
+    }
 
     public void getAllimages(){
         Call<List<ImagesResponse>> imagesResponse = ApiClient.getinterface().getAllimages();

@@ -7,6 +7,6 @@ import retrofit2.http.GET;
 
 public interface Apinterface {
 
-    @GET("informacao/")
+    @GET("fotos/")
     Call<List<ImagesResponse>> getAllimages();
 }
