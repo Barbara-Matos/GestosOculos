@@ -47,7 +47,7 @@ public class InfoMaquinaLayoutFragment extends BaseFragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.ficheiros, container, false);
+        final View view = inflater.inflate(R.layout.info_maquina, container, false);
         if (getArguments() != null) {
             final TextView textView = new TextView(getContext());
             textView.setText(getArguments().getString(TEXT_KEY, getString(R.string.empty_string)));

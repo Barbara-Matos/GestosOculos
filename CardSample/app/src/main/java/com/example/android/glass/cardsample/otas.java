@@ -10,9 +10,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.android.glass.cardsample.fragments.BaseFragment;
 import com.example.android.glass.cardsample.fragments.ListOTAsLayoutFragment;
-import com.example.android.glass.cardsample.fragments.MaquinaHistoricLayoutFragment;
-import com.example.android.glass.cardsample.fragments.MaquinaOTAsLayoutFragment;
-import com.example.android.glass.cardsample.fragments.UltimasManutencoesLayoutFragment;
 import com.example.glass.ui.GlassGestureDetector;
 import com.google.android.material.tabs.TabLayout;
 
@@ -35,7 +32,6 @@ public class otas extends BaseActivity{
         viewPager.setAdapter(screenSlidePagerAdapter);
 
         fragments.add(ListOTAsLayoutFragment.newInstance(null, null,null, null));
-        fragments.add(UltimasManutencoesLayoutFragment.newInstance(null, null,null, null));
 
         screenSlidePagerAdapter.notifyDataSetChanged();
 
@@ -47,20 +43,7 @@ public class otas extends BaseActivity{
     public boolean onGesture(GlassGestureDetector.Gesture gesture) {
         switch (gesture) {
             case TAP:
-                if (viewPager.getCurrentItem()==0) {
-                    // openOTAspecs();
-                }
-                else {
-                    openUltimasManutencoes();
-                }
-                return true;
-            case TWO_FINGER_TAP:
-                if (viewPager.getCurrentItem()==0) {
-                    return super.onGesture(gesture);
-                }
-                else {
-                    criarNovaOTA();
-                }
+                // openOTAspecs();
                 return true;
             case TWO_FINGER_SWIPE_BACKWARD:
                 goBack();
@@ -74,16 +57,6 @@ public class otas extends BaseActivity{
         Intent intent = new Intent(this, .class);
          startActivity(intent);
     } */
-
-    public void openUltimasManutencoes() {
-        Intent intent = new Intent(this, UltimasManutencoes.class);
-        startActivity(intent);
-    }
-
-    public void criarNovaOTA() {
-        Intent intent = new Intent(this, NovaOTA.class);
-        startActivity(intent);
-    }
 
     public void goBack(){
         Intent intent=new Intent(this,MaquinaXXX.class);

@@ -1,6 +1,5 @@
 package com.example.android.glass.cardsample;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -11,9 +10,6 @@ import android.os.Bundle;
 
 import com.example.android.glass.cardsample.fragments.BaseFragment;
 import com.example.android.glass.cardsample.fragments.InfoMaquinaLayoutFragment;
-import com.example.android.glass.cardsample.fragments.MaquinaHistoricLayoutFragment;
-import com.example.android.glass.cardsample.fragments.MaquinaOTAsLayoutFragment;
-import com.example.android.glass.cardsample.fragments.VideosLayoutFragment;
 import com.example.glass.ui.GlassGestureDetector;
 import com.google.android.material.tabs.TabLayout;
 
@@ -22,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ficheiros extends BaseActivity {
+public class InfoMaquina extends BaseActivity {
 
     private List<BaseFragment> fragments = new ArrayList<>();
     private ViewPager viewPager;
@@ -32,13 +28,12 @@ public class ficheiros extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_pager_layout);
 
-        final ficheiros.ScreenSlidePagerAdapter screenSlidePagerAdapter = new ficheiros.ScreenSlidePagerAdapter(
+        final InfoMaquina.ScreenSlidePagerAdapter screenSlidePagerAdapter = new InfoMaquina.ScreenSlidePagerAdapter(
                 getSupportFragmentManager());
         viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(screenSlidePagerAdapter);
 
         fragments.add(InfoMaquinaLayoutFragment.newInstance(null, null,null, null));
-        fragments.add(VideosLayoutFragment.newInstance(null, null,null, null));
 
         screenSlidePagerAdapter.notifyDataSetChanged();
 
@@ -50,21 +45,10 @@ public class ficheiros extends BaseActivity {
     public boolean onGesture(GlassGestureDetector.Gesture gesture) {
         switch (gesture) {
             case TAP:
-                if (viewPager.getCurrentItem()==0) {
-                    //infoMaquina();
-                }
-                else {
-                    //videos();
-                }
+                goFotos();
                 return true;
-            //openUltimasManutencoes();
             case TWO_FINGER_TAP:
-                if (viewPager.getCurrentItem()==0) {
-                    goFotos();
-                }
-                else {
-                    //pdf();
-                }
+                goVideos();
                 return true;
             case TWO_FINGER_SWIPE_BACKWARD:
                 goBack();
@@ -81,6 +65,11 @@ public class ficheiros extends BaseActivity {
 
     public void goFotos(){
         Intent intent=new Intent(this,foto.class);
+        startActivity(intent);
+    }
+
+    public void goVideos(){
+        Intent intent=new Intent(this,videos.class);
         startActivity(intent);
     }
 

@@ -1,30 +1,15 @@
 package com.example.android.glass.cardsample;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.GridLayout;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.android.glass.cardsample.fragments.BaseFragment;
-import com.example.android.glass.cardsample.fragments.InfoMaquinaLayoutFragment;
 import com.example.android.glass.cardsample.fragments.PassoAPassoFragment;
-import com.example.android.glass.cardsample.fragments.VideosLayoutFragment;
 import com.example.glass.ui.GlassGestureDetector;
 import com.google.android.material.tabs.TabLayout;
 
@@ -36,8 +21,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static com.example.glass.ui.GlassGestureDetector.Gesture.TWO_FINGER_TAP;
 
 public class Passo extends BaseActivity {
 
@@ -54,8 +37,8 @@ public class Passo extends BaseActivity {
                 getSupportFragmentManager());
         viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(screenSlidePagerAdapter);
-
-        fragments.add(PassoAPassoFragment.newInstance(R.drawable.ic_style, null,"Próximo Passo ->", null));
+        getAllimages();
+        fragments.add(PassoAPassoFragment.newInstance(imagesResponseList.get(1).getImage(), imagesResponseList.get(1).getInfo(),"Próximo Passo ->", null));
 
         screenSlidePagerAdapter.notifyDataSetChanged();
 
@@ -94,6 +77,23 @@ public class Passo extends BaseActivity {
         public int getCount() {
             return fragments.size();
         }
+    }
+
+    public void getAllimages(){
+        Call<List<ImagesResponse>> imagesResponse = ApiClient.getinterface().getAllimages();
+        imagesResponse.enqueue(new Callback<List<ImagesResponse>>() {
+            @Override
+            public void onResponse(Call<List<ImagesResponse>> call, Response<List<ImagesResponse>> response) {
+                if(response.isSuccessful()){
+                    imagesResponseList = response.body();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<ImagesResponse>> call, Throwable t) {
+
+            }
+        });
     }
 }
 
@@ -142,28 +142,7 @@ public class Passo extends BaseActivity {
         startActivity(intent);
     }
 
-    public void getAllimages(){
-        Call<List<ImagesResponse>> imagesResponse = ApiClient.getinterface().getAllimages();
-        imagesResponse.enqueue(new Callback<List<ImagesResponse>>() {
-            @Override
-            public void onResponse(Call<List<ImagesResponse>> call, Response<List<ImagesResponse>> response) {
-                if(response.isSuccessful()){
 
-                    imagesResponseList = response.body();
-                    CustomAdapter customAdapter=new CustomAdapter(imagesResponseList,Passo.this);
-                    gridView.setAdapter(customAdapter);
-
-                }else{
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<ImagesResponse>> call, Throwable t) {
-
-            }
-        });
-    }
 
     public class CustomAdapter extends BaseAdapter {
         private List<ImagesResponse>imagesResponseList;

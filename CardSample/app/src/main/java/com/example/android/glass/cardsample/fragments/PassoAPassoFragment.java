@@ -32,12 +32,12 @@ public class PassoAPassoFragment extends BaseFragment {
      * @param footer is a String with the card footer text.
      * @param timestamp is a String with the card timestamp text.
      */
-    public static PassoAPassoFragment newInstance(int image, @Nullable String text, @Nullable String footer,
+    public static PassoAPassoFragment newInstance(String image, @Nullable String text, @Nullable String footer,
                                                    @Nullable String timestamp) {
         final PassoAPassoFragment myFragment = new PassoAPassoFragment();
 
         final Bundle args = new Bundle();
-        args.putInt(IMAGE_KEY, image);
+        args.putString(IMAGE_KEY, image);
         if (text != null) {
             args.putString(TEXT_KEY, text);
         }

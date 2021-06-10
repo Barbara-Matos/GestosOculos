@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/glass_card_margin"
         android:layout_marginBottom="16dp"
-        android:text="Ficheiros"
+        android:text="Vídeos da Máquina"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="45sp"
@@ -23,37 +23,22 @@
 
     <FrameLayout
         android:id="@+id/body_layout"
-        android:layout_width="564dp"
-        android:layout_height="144dp"
+        android:layout_width="658dp"
+        android:layout_height="203dp"
         android:layout_margin="@dimen/glass_card_margin"
-        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/footer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent">
 
-        <!-- Put your widgets inside this FrameLayout. -->
-
-        <Button
+        <!--Isto deve estar mal, porque não dá para ver muitas imagens-->
+        <GridView
+            android:id="@+id/gridView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:background="#000080"
-            android:text="Informações da máquina"
-            android:textColor="#000000"
-            android:textSize="25sp"
-            app:backgroundTint="#FDFDFD" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:background="#000080"
-            android:text="Fotografias"
-            android:textColor="#000000"
-            android:textSize="25sp"
-            app:backgroundTint="#FDFDFD" />
-
+            android:layout_margin="1dp"
+            android:horizontalSpacing="4dp"
+            android:numColumns="2"
+            tools:ignore="MissingConstraints" />
     </FrameLayout>
 
     <TextView
@@ -82,5 +67,4 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

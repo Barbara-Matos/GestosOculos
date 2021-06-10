@@ -67,7 +67,7 @@ public class foto extends BaseActivity {
     }
 
     public void goBack(){
-        Intent intent=new Intent(this,ficheiros.class);
+        Intent intent=new Intent(this,InfoMaquina.class);
         startActivity(intent);
     }
 

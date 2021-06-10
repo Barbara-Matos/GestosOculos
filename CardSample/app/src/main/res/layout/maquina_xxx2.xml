@@ -9,29 +9,30 @@
 
     <TextView
         android:id="@+id/titulo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="574dp"
+        android:layout_height="67dp"
         android:layout_margin="@dimen/glass_card_margin"
-        android:layout_marginBottom="16dp"
         android:text="Maquina XXXX"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="50sp"
-        app:layout_constraintBottom_toTopOf="@+id/body_layout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
         android:id="@+id/body_layout"
-        android:layout_width="564dp"
-        android:layout_height="144dp"
+        android:layout_width="574dp"
+        android:layout_height="177dp"
         android:layout_margin="@dimen/glass_card_margin"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/footer"
+        android:layout_marginBottom="36dp"
+        app:layout_constraintBottom_toTopOf="@id/footer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titulo"
+        app:layout_constraintVertical_bias="0.65">
 
         <!-- Put your widgets inside this FrameLayout. -->
 
@@ -39,13 +40,13 @@
             android:id="@+id/imagemachine"
             android:layout_width="95dp"
             android:layout_height="97dp"
+            android:layout_gravity="center_horizontal"
             android:contentDescription="imagemhistorico"
-            android:src="@drawable/ic_historic"
-            android:layout_gravity="center_horizontal"/>
+            android:src="@drawable/ic_historic" />
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="82dp"
             android:layout_marginTop="100dp"
             android:background="#000080"
             android:onClick="onButtonClick"

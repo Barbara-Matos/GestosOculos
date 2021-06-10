@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/glass_card_margin"
         android:layout_marginBottom="16dp"
-        android:text="Imagens"
+        android:text="Fotos da Máquina"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="45sp"
@@ -23,8 +23,8 @@
 
     <FrameLayout
         android:id="@+id/body_layout"
-        android:layout_width="561dp"
-        android:layout_height="131dp"
+        android:layout_width="658dp"
+        android:layout_height="203dp"
         android:layout_margin="@dimen/glass_card_margin"
         app:layout_constraintBottom_toTopOf="@+id/footer"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,8 +35,8 @@
             android:id="@+id/gridView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:horizontalSpacing="4dp"
             android:layout_margin="1dp"
+            android:horizontalSpacing="4dp"
             android:numColumns="2"
             tools:ignore="MissingConstraints" />
     </FrameLayout>

@@ -57,7 +57,7 @@ public class MaquinaXXX extends BaseActivity{
                 return true;
             case TWO_FINGER_TAP:
                 if (viewPager.getCurrentItem()==0) {
-                    openFiles();
+                    openInfoMaquina();
                 }
                 return true;
             case TWO_FINGER_SWIPE_BACKWARD:
@@ -81,8 +81,8 @@ public class MaquinaXXX extends BaseActivity{
         startActivity(intent);
     }
 
-    public void openFiles() {
-        Intent intent = new Intent(this, ficheiros.class);
+    public void openInfoMaquina() {
+        Intent intent = new Intent(this, InfoMaquina.class);
         startActivity(intent);
     }
 

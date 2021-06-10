@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 
 import com.example.android.glass.cardsample.R;
 
-public class UltimasManutencoesLayoutFragment extends BaseFragment{
+public class VideoLayoutFragment extends BaseFragment{
 
     private static final String TEXT_KEY = "text_key";
     private static final String FOOTER_KEY = "footer_key";
@@ -21,15 +21,15 @@ public class UltimasManutencoesLayoutFragment extends BaseFragment{
     private static final int BODY_TEXT_SIZE = 40;
 
     /**
-     * Returns new instance of {@link UltimasManutencoesLayoutFragment}.
+     * Returns new instance of {@link VideoLayoutFragment}.
      *
      * @param text is a String with the card main text.
      * @param footer is a String with the card footer text.
      * @param timestamp is a String with the card timestamp text.
      */
-    public static UltimasManutencoesLayoutFragment newInstance(@Nullable String text, @Nullable String footer, @Nullable String timestamp,
+    public static VideoLayoutFragment newInstance(@Nullable String text, @Nullable String footer, @Nullable String timestamp,
                                                  @Nullable Integer menu) {
-        final UltimasManutencoesLayoutFragment myFragment = new UltimasManutencoesLayoutFragment();
+        final VideoLayoutFragment myFragment = new VideoLayoutFragment();
 
         final Bundle args = new Bundle();
         args.putString(TEXT_KEY, text);
@@ -47,7 +47,7 @@ public class UltimasManutencoesLayoutFragment extends BaseFragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.otas2, container, false);
+        final View view = inflater.inflate(R.layout.videos_layout, container, false);
         if (getArguments() != null) {
             final TextView textView = new TextView(getContext());
             textView.setText(getArguments().getString(TEXT_KEY, getString(R.string.empty_string)));

@@ -17,11 +17,12 @@
         <activity android:name=".Passo"></activity>
         <activity android:name=".click" />
         <activity android:name=".foto" />
-        <activity android:name=".ficheiros" />
+        <activity android:name=".InfoMaquina" />
         <activity android:name=".historico" />
         <activity android:name=".ordem_trabalho" />
         <activity android:name=".videochamada" />
         <activity android:name=".MaquinaXXX" />
+        <activity android:name=".videos" />
         <activity android:name=".otas" />
         <!--
       Changes Glass touchpad response from the following key strokes:
